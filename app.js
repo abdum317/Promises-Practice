@@ -46,7 +46,7 @@
 //     console.log(`you are ${symbol}`);
 // })
 // .catch((err)=>{
-//     console.error(err.message);
+//     console.error(err);
 // })
 
 
@@ -68,14 +68,14 @@ function validateEmailPass (){
             if(users[x].email === emails && users[x].password === passwords){
                 resolve();
             }
-            else if( JSON.stringify(users[x].email) === emails && JSON.stringify(users[x].password) !== passwords){
-                reject({error:404,message:"password is not correct"})
+            else if( users[x].email === emails && users[x].password !== passwords){
+                reject("password is not correct");
             }
-            else if(JSON.stringify(users[x].email) !== emails && JSON.stringify(users[x].password === passwords)){
-                reject({error:404,message:"email is not correct"})
+            else if(users[x].email !== emails && users[x].password === passwords){
+                reject("email is not correct")
             }
             else{
-                reject({error:404,message:"email and password is not correct"})
+                reject("email and password is not correct")
             }
 
         }
